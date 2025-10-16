@@ -36,9 +36,9 @@ python manage.py runserver
   - Prime / Armstrong Check
   - GCD, HCF, LCM
   - Average Calculation
-- 💾 Calculation History Page
-- 🎨 Dynamic input field labels (changes automatically based on operation)
-- 🧹 Clear button to reset form instantly
+  - Calculation History Page
+  - Dynamic input field labels (changes automatically based on operation)
+  - Clear button to reset form instantly
 
 ## 📄LICENSE
 This project is licensed under the MIT License — you are free to use, modify, and distribute it with proper credit.
