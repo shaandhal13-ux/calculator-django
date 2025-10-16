@@ -1,0 +1,95 @@
+{% load static %}
+<html>
+<head>
+    <title>Modern Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("{% static 'images/bg2.jpg' %}") center center / cover no-repeat fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    }
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="current-date" id="currentDate"></div>
+        <a href="{% url 'history' %}" class="btn btn-warning">View History</a>
+    </nav>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <form method="post">
+                        {% csrf_token %}
+                        <!--1. Select operation-->
+                        <label for="operation" class="form-label">Select Operation:</label>
+                        <select name="operation" id="operation" required onchange="showFields()">
+                            <option value="">---Select---</option>
+                            <option value="arith">Arithmetic</option>
+                            <option value="arm">Armstrong Check</option>
+                            <option value="avg">Average</option>
+                            <option value="evenodd">Even / Odd Check</option>
+                            <option value="fact">Factorial</option>
+                            <option value="gcd">GCD</option>
+                            <option value="hcf">HCF</option>
+                            <option value="lcm">LCM</option>
+                            <option value="prime">Prime Check</option>
+                            <option value="power">Power (xʸ)</option>
+                            <option value="square">Square (x²)</option>
+                            <option value="sqrt">Square Root (√x)</option>
+                        </select>
+                        <!--if arithmetic-->
+                        <div id="arithContainer" style="display:none;">
+                            <label for="arithOp" class="form-label">Arithmetic Operation:</label>
+                            <select name="sub_operation" id="arithOp">
+                                <option value="">---Select---</option>
+                                <option value="add">Addition (+)</option>
+                                <option value="sub">Subtraction (-)</option>
+                                <option value="mul">Multiplication (×)</option>
+                                <option value="div">Division (÷)</option>
+                            </select>
+                        </div>
+                        <!--num1-->
+                        <div id="num1Container" style="display:none;">
+                            <label class="form-label">Number 1:</label>
+                            <input type="number" name="num1" class="form-control">
+                        </div>
+                        <!--num2-->
+                        <div id="num2Container" style="display:none;">
+                            <label class="form-label">Number 2:</label>
+                            <input type="number" name="num2" class="form-control">
+                        </div>
+                        <!--buttons-->
+                        <div class="button">
+                            <!--calculate button-->
+                            <button type="submit">Calculate</button>
+                            <!--clear button-->
+                            <button type="reset" id="clearBtn">Clear</button>
+                        </div>
+                    </form>
+                    <!--result-->
+                    {% if result %}
+                    <div id="result">
+                        <h2>Result</h2>
+                        <p>{{ result }}</p>
+                        <!--explanation-->
+                        <button id="explainBtn" type="button">Show Explanation</button>
+                        <div id="explanation" style="display:none; margin-top:15px;"></div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
