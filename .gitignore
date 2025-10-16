@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Django specific
+/staticfiles/
+/media/
+/db.sqlite3
+
+# Environment
+.env
+venv/
+.env.local
+.env.production
+
+# IDEs & editors
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node-related (if you use npm for frontend)
+node_modules/
